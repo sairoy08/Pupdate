@@ -1,4 +1,4 @@
-name: WalkBuddy
+name: Pupdate
 options:
   bundleIdPrefix: com.walkbuddy
   deploymentTarget:
@@ -9,16 +9,16 @@ settings:
     CODE_SIGN_STYLE: Automatic
     SWIFT_VERSION: "5.0"
 targets:
-  WalkBuddy:
+  Pupdate:
     type: application
     platform: iOS
     sources:
-      - path: WalkBuddy/Sources
-      - path: WalkBuddy/Shared
-      - path: WalkBuddy/Resources
+      - path: Pupdate/Sources
+      - path: Pupdate/Shared
+      - path: Pupdate/Resources
         buildPhase: resources
     dependencies:
-      - target: WalkBuddyWidgets
+      - target: PupdateWidgets
         embed: true
     settings:
       base:
@@ -29,7 +29,7 @@ targets:
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
     info:
-      path: WalkBuddy/Info.plist
+      path: Pupdate/Info.plist
       properties:
         CFBundleDisplayName: Pupdate
         UILaunchScreen:
@@ -51,12 +51,12 @@ targets:
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
         WBDefaultServer: https://45-76-67-21.sslip.io
-  WalkBuddyWidgets:
+  PupdateWidgets:
     type: app-extension
     platform: iOS
     sources:
-      - path: WalkBuddyWidgets
-      - path: WalkBuddy/Shared
+      - path: PupdateWidgets
+      - path: Pupdate/Shared
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.walkbuddy.app.F87457F436.widgets
@@ -65,32 +65,32 @@ targets:
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
     info:
-      path: WalkBuddyWidgets/Info.plist
+      path: PupdateWidgets/Info.plist
       properties:
         CFBundleDisplayName: Pupdate
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
-  WalkBuddyUITests:
+  PupdateUITests:
     type: bundle.ui-testing
     platform: iOS
     sources:
-      - path: WalkBuddyUITests
+      - path: PupdateUITests
     dependencies:
-      - target: WalkBuddy
+      - target: Pupdate
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.walkbuddy.app.F87457F436.uitests
         GENERATE_INFOPLIST_FILE: YES
-        TEST_TARGET_NAME: WalkBuddy
+        TEST_TARGET_NAME: Pupdate
 schemes:
-  WalkBuddy:
+  Pupdate:
     build:
       targets:
-        WalkBuddy: all
-        WalkBuddyWidgets: all
+        Pupdate: all
+        PupdateWidgets: all
     run:
       config: Debug
     test:
       config: Debug
       targets:
-        - WalkBuddyUITests
+        - PupdateUITests

@@ -1,10 +1,18 @@
 # Pupdate
 
-Your pup walks you home and keeps your friends updated.
+Your pup walks you home and keeps your friends updated. (Formerly WalkBuddy. The code, Xcode targets, bundle IDs and
+server paths still use the internal name `walkbuddy`; see CLAUDE.md.)
+
 
 Raise a little buddy by walking home safe. Pick your pet (pup, kitty, bunny, otter, sloth and more), name it, and while you walk it checks in now and then. You answer by petting it: rub your finger across it, because a tap doesn't count. If you stop answering, it escalates, and then your friends get a full-screen alert with your last location.
 
 Built at SunHacks 2026.
+
+<p>
+<img src="screenshots/02-home.png" width="200"> <img src="screenshots/04-walk.png" width="200"> <img src="screenshots/05-check-in.png" width="200"> <img src="screenshots/10-friend-alert.png" width="200">
+</p>
+
+More in [screenshots/](screenshots/).
 
 ## How it works
 
@@ -76,10 +84,10 @@ The Xcode project is generated from `swift/project.yml` with [XcodeGen](https://
 ```bash
 cd swift
 xcodegen generate
-open WalkBuddy.xcodeproj
+open Pupdate.xcodeproj
 ```
 
-1. Set your own Team in Signing & Capabilities for both targets, WalkBuddy and WalkBuddyWidgets.
+1. Set your own Team in Signing & Capabilities for both targets, Pupdate and PupdateWidgets.
 2. Change the bundle ID if needed.
 3. Run on an iPhone.
 
@@ -89,7 +97,7 @@ Each phone chooses a role on first launch: **walker (Jordan)** or **friend (Maya
 
 - **Home:** the buddy on its pedestal, XP, streak, level, and the evolution track.
 - **Past walks:** every ended walk with its route, time, distance, check-ins answered, and how it ended. A demo reset brings back the same two seeded walks.
-- **Where to tonight?:** Apple Maps destination search and real walking directions. Then "Walk with Levin", as a demo walk or with real GPS.
+- **Where to tonight?:** Apple Maps destination search and real walking directions. Then "Walk with Melvin", as a demo walk or with real GPS.
 - **Walk:** a live 3D map, the buddy's speech bubble with a countdown ring, and mood badges. The walk is mirrored to a Live Activity on the Lock Screen and in the Dynamic Island.
 - **Friend:** a live map of the walk, demo controls, and full-screen alerts.
 
@@ -100,9 +108,9 @@ During a demo walk, the walker's screen has a **Test tools** card. **Demo walker
 ## Demo script (about 2 min, two phones)
 
 1. On the friend phone, tap **Reset**, then **Start walk**. Or on the walker phone, pick a destination and start a demo walk. The sim walks the route at 2x.
-2. About 15 s in, Levin asks "Still good?". Pet him: +10 XP, and he evolves into a Chick.
+2. About 15 s in, Melvin asks "Still good?". Pet him: +10 XP, and he evolves into a Chick.
 3. Tap **Stop answering**. Escalation runs at 4x, about 28 s. The friend phone shows the red alert with **Call Jordan** and the last location.
-4. The friend closes the alert. Then long-press Levin for 2 s: a silent duress alert reaches the friend with "Do not call first", and there's no call button.
+4. The friend closes the alert. Then long-press Melvin for 2 s: a silent duress alert reaches the friend with "Do not call first", and there's no call button.
 5. Tap **Off route**. The sim drifts off the route, and a check-in fires.
 6. Tap **Reset** before the next judge. Every judge sees the same evolution.
 
@@ -134,6 +142,6 @@ The simulator never pets the buddy. Every pet comes from the phone.
 
 ## Credits
 
-- **3D sprites:** [Microsoft Fluent Emoji](https://github.com/microsoft/fluentui-emoji), MIT License. See `swift/WalkBuddy/Resources/Sprites/FLUENT_EMOJI_LICENSE.txt`.
-- **Fonts:** Bricolage Grotesque and Figtree, SIL Open Font License. See `swift/WalkBuddy/Resources/Fonts/OFL-*.txt`.
+- **3D sprites:** [Microsoft Fluent Emoji](https://github.com/microsoft/fluentui-emoji), MIT License. See `swift/Pupdate/Resources/Sprites/FLUENT_EMOJI_LICENSE.txt`.
+- **Fonts:** Bricolage Grotesque and Figtree, SIL Open Font License. See `swift/Pupdate/Resources/Fonts/OFL-*.txt`.
 - **Maps, search and walking directions:** Apple MapKit.

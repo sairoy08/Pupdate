@@ -15,7 +15,7 @@ from .engine import ESCALATING
 from .geo import offset, point_along
 from .routes import OFF_ROUTE_M, load_routes, off_route_m
 
-log = logging.getLogger("walkbuddy.demo")
+log = logging.getLogger("pupdate.demo")
 WALK_SPEED = 1.4  # m/s, a brisk walk
 # Escalation used to jump to 4x, which left a 20 s countdown about 5 real seconds: too short to
 # rub the buddy in time. It now stays at walking speed (the speed control still overrides it).
@@ -160,7 +160,7 @@ def start_loop():
     if _thread and _thread.is_alive():
         return
     _stop.clear()
-    _thread = threading.Thread(target=loop, daemon=True, name="walkbuddy-sim")
+    _thread = threading.Thread(target=loop, daemon=True, name="pupdate-sim")
     _thread.start()
 
 

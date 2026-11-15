@@ -4,7 +4,7 @@
 # - Restarts the backend or ngrok if either one exits.
 # Usage: ./demo-server.sh            (Ctrl-C to stop everything)
 DIR="$(cd "$(dirname "$0")" && pwd)"
-URL="${WALKBUDDY_URL:-zesty-decompose-tinwork.ngrok-free.dev}"
+URL="${PUPDATE_URL:-${WALKBUDDY_URL:-zesty-decompose-tinwork.ngrok-free.dev}}"
 LOGS="$DIR/.logs"; mkdir -p "$LOGS"
 
 caffeinate -dimsu -w $$ &

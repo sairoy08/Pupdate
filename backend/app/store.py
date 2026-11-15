@@ -17,7 +17,7 @@ import uuid
 
 import httpx
 
-log = logging.getLogger("walkbuddy.store")
+log = logging.getLogger("pupdate.store")
 KEY = "wb:state"
 LOCK = "wb:lock"
 

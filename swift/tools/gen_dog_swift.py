@@ -1,4 +1,4 @@
-"""Writes WalkBuddy/Shared/DogArt.swift from tools/dog_art.json (run dog_art.py first)."""
+"""Writes Pupdate/Shared/DogArt.swift from tools/dog_art.json (run dog_art.py first)."""
 import json
 from pathlib import Path
 here = Path(__file__).resolve().parent
@@ -31,5 +31,5 @@ enum DogArt {{
     static let iris: UInt32 = {hx(f["iris"])}, line: UInt32 = {hx(f["line"])}
 }}
 '''
-(here.parent / "WalkBuddy" / "Shared" / "DogArt.swift").write_text(out)
+(here.parent / "Pupdate" / "Shared" / "DogArt.swift").write_text(out)
 print("ok", len(lines))

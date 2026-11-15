@@ -19,7 +19,7 @@ LOCK = threading.RLock()
 
 SEED_USERS = {
     "jordan": {"id": "jordan", "name": "Jordan", "phone": "+15555550100", "friends": ["maya", "sam"], "streak": 6,
-               "buddy": {"name": "Levin", "xp": 90, "form": "sprout", "species": "dog"}},
+               "buddy": {"name": "Melvin", "xp": 90, "form": "sprout", "species": "dog"}},
     "maya": {"id": "maya", "name": "Maya", "phone": "+15555550101", "friends": ["jordan"], "streak": 2,
              "buddy": {"name": "Pip", "xp": 40, "form": "sprout", "species": "cat"}},
     "sam": {"id": "sam", "name": "Sam", "phone": "+15555550102", "friends": ["jordan"], "streak": 11,
@@ -111,7 +111,8 @@ def user(uid):
     return u
 
 
-SPECIES = {"chick", "dog", "cat", "bunny", "poodle", "hedgehog", "chipmunk", "otter", "seal", "sloth", "turtle", "penguin"}
+# The pup is the main pet; the chick was removed.
+SPECIES = {"dog", "cat", "bunny", "poodle", "hedgehog", "chipmunk", "otter", "seal", "sloth", "turtle", "penguin"}
 
 
 def customize_buddy(uid, name=None, species=None):
@@ -305,7 +306,7 @@ def handle(w, events):
                 w["buddy_line"] = buddy_ai.fallback_line(ev.get("reason"), u["name"])
                 w["buddy_line_source"] = "fallback"
                 buddy_ai.fill_async(w, "buddy_line", buddy_ai.checkin_prompt(
-                    b["name"], b.get("species", "chick"), u["name"], ev.get("reason"), place_of(w)), 80)
+                    b["name"], b.get("species", "dog"), u["name"], ev.get("reason"), place_of(w)), 80)
         elif t == "contact_restored":
             for a in open_alerts(w["id"]):
                 if a["kind"] == "lost_contact":
@@ -610,3 +611,7 @@ def restore(data):
         flags_mod.seed()
     routes.CUSTOM.clear()
     routes.CUSTOM.update(data.get("custom_routes", {}))
+    # Buddies saved as a chick before it was removed become pups.
+    for u in STATE["users"].values():
+        if isinstance(u.get("buddy"), dict) and u["buddy"].get("species", "chick") == "chick":
+            u["buddy"]["species"] = "dog"

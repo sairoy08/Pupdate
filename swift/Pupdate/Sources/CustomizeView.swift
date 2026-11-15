@@ -43,7 +43,7 @@ struct CustomizeView: View {
 
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Name").font(Typeface.displayBold(17)).foregroundStyle(Palette.text)
-                        TextField("Levin", text: $name)
+                        TextField("Melvin", text: $name)
                             .font(Typeface.semi(18)).foregroundStyle(Palette.text)
                             .focused($naming).submitLabel(.done)
                             .padding(.horizontal, 16).frame(minHeight: 52)
@@ -75,8 +75,8 @@ struct CustomizeView: View {
                                 .accessibilityAddTraits(on ? .isSelected : [])
                             }
                         }
-                        Text(species == "chick"
-                             ? "The chick grows up: egg, then chick, then night owl."
+                        Text(species == "dog"
+                             ? "Your pup earns a bandana at 100 XP (Scout Pup) and a vest, tag and headlamp at 250 XP (Guardian Dog)."
                              : "Your \(SPECIES.first { $0.id == species }?.name.lowercased() ?? "pet") earns a star at 100 XP and a crown at 250 XP.")
                             .font(Typeface.body(13)).foregroundStyle(Palette.muted)
                     }

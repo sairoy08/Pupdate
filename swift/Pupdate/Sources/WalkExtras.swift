@@ -17,7 +17,7 @@ func formatMeters(_ m: Int) -> String { m >= 1000 ? String(format: "%.1f km", Do
 /// "In 80 m, turn left onto E University Dr", with the buddy cheering at the turn itself.
 struct NextTurnCard: View {
     let turn: NextTurn
-    var buddyName = "Levin"
+    var buddyName = "Melvin"
     var species: String? = "dog"
     var form = "sprout"
 

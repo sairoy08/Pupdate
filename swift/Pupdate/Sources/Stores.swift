@@ -70,9 +70,9 @@ final class WalkerStore: ObservableObject {
         if let st, st != lastState, st != "calm" {
             Feedback.checkInChime()
             // Neutral wording: a bystander who sees the Lock Screen learns nothing about safety or alerts.
-            Notify.post("wb.checkin", title: "\(w?.buddy.name ?? "Levin") wants a pet")
+            Notify.post("wb.checkin", title: "\(w?.buddy.name ?? "Melvin") wants a pet")
             if st == "checkin" || st == "countdown" {
-                let name = w?.buddy.name ?? "Levin"
+                let name = w?.buddy.name ?? "Melvin"
                 Feedback.speak(w?.buddyLine ?? stateCopy(st, name: name).title + " " + stateCopy(st, name: name).sub)
             }
         }

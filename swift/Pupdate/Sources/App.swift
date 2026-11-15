@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct WalkBuddyApp: App {
+struct PupdateApp: App {
     var body: some Scene {
         WindowGroup {
             RootView().preferredColorScheme(.dark)

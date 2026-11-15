@@ -19,7 +19,7 @@ import threading
 
 from .geo import dist_m
 
-log = logging.getLogger("walkbuddy.pace")
+log = logging.getLogger("pupdate.pace")
 
 SAMPLE_EVERY_S = 5.0
 KEEP = 36  # 3 minutes of samples

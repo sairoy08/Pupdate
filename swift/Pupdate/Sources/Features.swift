@@ -139,7 +139,7 @@ struct TripsView: View {
 
 // MARK: - Walk log
 
-/// Everything Levin noticed on this walk, newest first.
+/// Everything Melvin noticed on this walk, newest first.
 struct WalkLog: View {
     let events: [WalkEvent]
     var title = "Walk log"
@@ -149,7 +149,7 @@ struct WalkLog: View {
         VStack(alignment: .leading, spacing: 12) {
             SectionTitle(text: title)
             if rows.isEmpty {
-                Text("Quiet so far. Levin will note every check-in here.").font(Typeface.body(14)).foregroundStyle(Palette.muted)
+                Text("Quiet so far. Melvin will note every check-in here.").font(Typeface.body(14)).foregroundStyle(Palette.muted)
             }
             ForEach(Array(rows.enumerated()), id: \.offset) { _, r in
                 HStack(alignment: .top, spacing: 12) {
@@ -182,7 +182,7 @@ struct WalkLog: View {
             case "demo": "Demo check-in"
             default: "Scheduled check-in"
             }
-            return Row(icon: "questionmark", tint: Palette.sky, title: "Levin checked in", sub: why, time: t)
+            return Row(icon: "questionmark", tint: Palette.sky, title: "Melvin checked in", sub: why, time: t)
         case "pet_ok":
             if let evo = e.evolved {
                 return Row(icon: "sparkles", tint: Palette.gold, title: "Evolved into \(formName(evo, species: species))", sub: "+\(e.xp ?? 0) XP for answering", time: t)

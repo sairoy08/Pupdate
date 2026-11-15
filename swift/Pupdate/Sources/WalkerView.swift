@@ -62,7 +62,7 @@ struct WalkScreen: View {
         let walk = store.walk ?? lastWalk
         let state = walk?.engine.state ?? "calm"
         let buddy = walk?.buddy ?? store.user?.buddy
-        let copy = stateCopy(state, name: buddy?.name ?? "Levin")
+        let copy = stateCopy(state, name: buddy?.name ?? "Melvin")
         let mood: Mood = store.happy ? .happy : (walk == nil ? .calm : copy.mood)
         let urgent = ["final", "countdown", "alert"].contains(state)
         let route = store.routes.first { $0.id == walk?.routeId }
@@ -90,7 +90,7 @@ struct WalkScreen: View {
                         Banner(text: "Can't reach the server. Go back and check the address.", alert: true)
                     }
                     if let t = walk?.nextTurn, state == "calm" || state == "checkin" {
-                        NextTurnCard(turn: t, buddyName: buddy?.name ?? "Levin", species: buddy?.species, form: buddy?.form ?? "sprout")
+                        NextTurnCard(turn: t, buddyName: buddy?.name ?? "Melvin", species: buddy?.species, form: buddy?.form ?? "sprout")
                             .transition(.move(edge: .top).combined(with: .opacity))
                     }
                     if let f = walk?.flagAhead { FlagAheadBanner(flag: f).transition(.move(edge: .top).combined(with: .opacity)) }
@@ -115,7 +115,7 @@ struct WalkScreen: View {
                                     Text(copy.sub).font(Typeface.body(13)).foregroundStyle(Palette.muted)
                                         .contentTransition(.opacity)
                                 } else {
-                                    Text(walk == nil ? "Start a walk and \(buddy?.name ?? "Levin") comes with you." : copy.sub)
+                                    Text(walk == nil ? "Start a walk and \(buddy?.name ?? "Melvin") comes with you." : copy.sub)
                                         .font(Typeface.body(15)).foregroundStyle(Palette.muted)
                                 }
                             }

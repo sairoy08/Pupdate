@@ -12,7 +12,7 @@ import re
 
 import httpx
 
-log = logging.getLogger("walkbuddy.route_ai")
+log = logging.getLogger("pupdate.route_ai")
 BASE = "https://generativelanguage.googleapis.com/v1beta"
 MAIN = re.compile(r"\b(Dr|Ave|Blvd|St|Rd|Pkwy|Way|Mall|Street|Avenue|Drive|Road|Boulevard)\b", re.I)
 RISKY = re.compile(r"\b(path|trail|alley|parking|lot|walkway|footpath|service|underpass|tunnel)\b", re.I)

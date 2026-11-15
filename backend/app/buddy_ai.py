@@ -14,7 +14,7 @@ import threading
 
 import httpx
 
-log = logging.getLogger("walkbuddy.buddy_ai")
+log = logging.getLogger("pupdate.buddy_ai")
 BASE = "https://generativelanguage.googleapis.com/v1beta"
 
 FALLBACK_LINES = {

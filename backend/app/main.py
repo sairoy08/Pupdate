@@ -1,4 +1,4 @@
-"""Pupdate API (the code and server still use the internal name walkbuddy)."""
+"""Pupdate API. (The server folder, systemd unit and MongoDB database keep the old name walkbuddy.)"""
 import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -22,7 +22,7 @@ from . import demo, store, walks  # noqa: E402
 from .routes import load_routes  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
-log = logging.getLogger("walkbuddy")
+log = logging.getLogger("pupdate")
 
 
 @asynccontextmanager

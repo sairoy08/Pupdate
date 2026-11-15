@@ -9,7 +9,7 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmo
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' > /etc/apt/sources.list.d/caddy-stable.list
 apt-get update && apt-get install -y caddy
 
-git clone --depth 1 https://github.com/JeremyEltho/walkbuddy /opt/walkbuddy
+git clone --depth 1 https://github.com/JeremyEltho/Pupdate /opt/walkbuddy
 python3 -m venv /opt/walkbuddy/backend/.venv
 /opt/walkbuddy/backend/.venv/bin/pip install -r /opt/walkbuddy/backend/requirements.txt
 

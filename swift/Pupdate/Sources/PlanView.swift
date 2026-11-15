@@ -398,7 +398,7 @@ struct PlanView: View {
                 if let d = plan.destination {
                     TripSheet(name: d.name ?? "Destination", address: d.placemark.title, plan: plan, route: plan.route, routing: plan.routing,
                               demo: $demo, starting: starting, buddyForm: store.user?.buddy.form ?? "sprout", buddySpecies: store.user?.buddy.species,
-                              buddyName: store.user?.buddy.name ?? "Levin") {
+                              buddyName: store.user?.buddy.name ?? "Melvin") {
                         Task {
                             starting = true
                             await store.startPlanned(points: plan.points, from: plan.startName, to: d.name ?? "Destination", demo: demo, steps: plan.stepsPayload)

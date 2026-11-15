@@ -12,7 +12,7 @@ struct HomeView: View {
     }
 
     var body: some View {
-        let buddy = store.user?.buddy ?? BuddyInfo(name: "Levin", xp: 90, form: "sprout")
+        let buddy = store.user?.buddy ?? BuddyInfo(name: "Melvin", xp: 90, form: "sprout")
         let streak = store.user?.streak ?? 0
         ZStack {
             Sky()
@@ -137,6 +137,16 @@ struct HomeView: View {
             // Simulator-only: -previewPlan "<place>" opens the map page for layout checks.
             if let i = CommandLine.arguments.firstIndex(of: "-previewPlan"), i + 1 < CommandLine.arguments.count {
                 panel = .plan(CommandLine.arguments[i + 1])
+            }
+            // Simulator-only: -panel settings|flags|trips|customize opens that screen (screenshots).
+            if let i = CommandLine.arguments.firstIndex(of: "-panel"), i + 1 < CommandLine.arguments.count {
+                switch CommandLine.arguments[i + 1] {
+                case "settings": panel = .settings
+                case "flags": panel = .flags
+                case "trips": panel = .trips
+                case "customize": panel = .customize
+                default: break
+                }
             }
             #endif
         }

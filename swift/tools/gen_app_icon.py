@@ -1,5 +1,5 @@
 """App icon: the calm puppy on the night sky. Renders with headless Chrome.
-  python3 gen_app_icon.py     (writes WalkBuddy/Resources/Assets.xcassets/AppIcon.appiconset/icon-1024.png)
+  python3 gen_app_icon.py     (writes Pupdate/Resources/Assets.xcassets/AppIcon.appiconset/icon-1024.png)
 """
 import subprocess
 import tempfile
@@ -8,7 +8,7 @@ from pathlib import Path
 from dog_preview import dog_svg
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-OUT = Path(__file__).resolve().parents[1] / "WalkBuddy/Resources/Assets.xcassets/AppIcon.appiconset/icon-1024.png"
+OUT = Path(__file__).resolve().parents[1] / "Pupdate/Resources/Assets.xcassets/AppIcon.appiconset/icon-1024.png"
 STARS = [(120, 150, 7), (860, 120, 9), (930, 330, 5), (90, 420, 5), (760, 60, 4), (230, 70, 4)]
 
 stars = "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#f3f4ff" opacity=".8"/>' for x, y, r in STARS)

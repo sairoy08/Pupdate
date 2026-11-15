@@ -1,7 +1,7 @@
 import XCTest
 
 /// End-to-end: the real app, tapping through the demo, against the real backend on localhost:8100.
-final class WalkBuddyE2ETests: XCTestCase {
+final class PupdateE2ETests: XCTestCase {
     /// The live server by default; set TEST_RUNNER_WB_SERVER (e.g. http://localhost:8100) to test a local backend
     /// without disturbing phones that are using the live one.
     let server = ProcessInfo.processInfo.environment["WB_SERVER"] ?? "https://45-76-67-21.sslip.io"
@@ -41,7 +41,7 @@ final class WalkBuddyE2ETests: XCTestCase {
     /// Walker answers the first check-in by petting: +10 XP and the evolution celebration.
     func testWalkerPetsAndEvolves() {
         api("/demo/reset")
-        api("/users/jordan/buddy", "{\"name\":\"Levin\",\"species\":\"dog\"}")
+        api("/users/jordan/buddy", "{\"name\":\"Melvin\",\"species\":\"dog\"}")
         api("/demo/start")
         let app = launch(role: "walker")
         XCTAssertTrue(text(app, "Still good?").waitForExistence(timeout: 30), "check-in never showed")
@@ -130,7 +130,7 @@ final class WalkBuddyE2ETests: XCTestCase {
         if app.buttons["Quickest route"].exists { app.buttons["Quickest route"].tap() }
         // "Safety notes by Gemini" with a key, "Safety picked by street type" without one (the fallback).
         XCTAssertTrue(text(app, "A guide, not a guarantee").waitForExistence(timeout: 15), "no route safety notes")
-        let go = app.buttons["Walk with Levin"]
+        let go = app.buttons["Walk with Melvin"]
         XCTAssertTrue(go.waitForExistence(timeout: 20), "no trip sheet")
         let enabled = NSPredicate(format: "isEnabled == true")
         expectation(for: enabled, evaluatedWith: go)
@@ -153,7 +153,7 @@ final class WalkBuddyE2ETests: XCTestCase {
         let demo = app.switches.firstMatch
         XCTAssertTrue(demo.waitForExistence(timeout: 20))
         if (demo.value as? String) == "1" { demo.switches.firstMatch.tap() }
-        let go = app.buttons["Walk with Levin"]
+        let go = app.buttons["Walk with Melvin"]
         expectation(for: NSPredicate(format: "isEnabled == true"), evaluatedWith: go)
         waitForExpectations(timeout: 20)
         go.tap()
@@ -189,7 +189,7 @@ final class WalkBuddyE2ETests: XCTestCase {
     /// Pet three check-ins in a row, then pet one late: XP 90 -> 100 -> 110 -> 120, late adds nothing.
     func testPettingAtIntervals() {
         api("/demo/reset")
-        api("/users/jordan/buddy", "{\"name\":\"Levin\",\"species\":\"chick\"}")
+        api("/users/jordan/buddy", "{\"name\":\"Melvin\",\"species\":\"chick\"}")
         api("/demo/start")
         let app = launch(role: "walker", extra: ["-wb.petStyle", "rub"])
         for (i, xp) in [100, 110, 120].enumerated() {
@@ -363,7 +363,7 @@ final class WalkBuddyE2ETests: XCTestCase {
         app.alerts.buttons["Turn off"].tap()
         XCTAssertTrue(text(app, "Off: only the silent alert").waitForExistence(timeout: 5))
         toggle.switches.firstMatch.exists ? toggle.switches.firstMatch.tap() : toggle.tap()
-        XCTAssertTrue(text(app, "Levin checks in and alerts").waitForExistence(timeout: 5))
+        XCTAssertTrue(text(app, "Melvin checks in and alerts").waitForExistence(timeout: 5))
         let total = app.staticTexts["alert-total"]
         scrollTo(app, total)
         XCTAssertTrue(total.label.contains("1 min 50 s"), "default ladder total wrong: \(total.label)")

@@ -63,7 +63,7 @@ struct SettingsView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Check-ins").font(Typeface.semi(15)).foregroundStyle(Palette.text)
                                 Text(checkinsOff ? "Off: only the silent alert, lost contact and car speed still alert friends"
-                                                 : "Levin checks in and alerts your circle if you don't answer")
+                                                 : "Melvin checks in and alerts your circle if you don't answer")
                                     .font(Typeface.body(12.5)).foregroundStyle(checkinsOff ? Palette.alert : Palette.muted)
                             }
                         }
@@ -72,7 +72,7 @@ struct SettingsView: View {
                         if !checkinsOff {
                             divider
                             VStack(alignment: .leading, spacing: 10) {
-                                Text("Levin checks in").font(Typeface.semi(15)).foregroundStyle(Palette.text)
+                                Text("Melvin checks in").font(Typeface.semi(15)).foregroundStyle(Palette.text)
                                 HStack(spacing: 6) {
                                     ForEach([(0, "Only if off"), (300, "5 min"), (600, "10 min"), (900, "15 min")], id: \.0) { v, label in
                                         choice(label, icon: v == 0 ? "exclamationmark.triangle.fill" : "clock.fill", on: checkinEvery == v, tint: Palette.gold) { checkinEvery = v }
@@ -83,7 +83,7 @@ struct SettingsView: View {
                                         choice(label, icon: "clock.badge.exclamationmark", on: checkinEvery == v, tint: Palette.warn) { checkinEvery = v }
                                     }
                                 }
-                                Text(checkinEvery == 0 ? "Levin only checks in when something looks off." : "Every \(checkinEvery / 60) minutes, plus whenever something looks off.")
+                                Text(checkinEvery == 0 ? "Melvin only checks in when something looks off." : "Every \(checkinEvery / 60) minutes, plus whenever something looks off.")
                                     .font(Typeface.body(12.5)).foregroundStyle(Palette.muted)
                             }
                             divider
@@ -134,9 +134,9 @@ struct SettingsView: View {
                     }
 
                     group("On your phone") {
-                        toggle("Lock Screen Live Activity", "Your walk and Levin on the Lock Screen and Dynamic Island", $liveActivity)
+                        toggle("Lock Screen Live Activity", "Your walk and Melvin on the Lock Screen and Dynamic Island", $liveActivity)
                         divider
-                        toggle("Haptics", "Buzz when Levin checks in or an alert arrives", $haptics)
+                        toggle("Haptics", "Buzz when Melvin checks in or an alert arrives", $haptics)
                         divider
                         toggle("Satellite map", "Real aerial imagery in 3D. Off for the dark map", $satellite)
                     }
@@ -247,7 +247,7 @@ struct SettingsView: View {
                                 resetDone = false
                             }
                         }
-                        Text("Restores Levin to 90 XP, the streak and the friends list, and clears walks and alerts.")
+                        Text("Restores Melvin to 90 XP, the streak and the friends list, and clears walks and alerts.")
                             .font(Typeface.body(12.5)).foregroundStyle(Palette.muted)
                         divider
                         GameButton(title: "Switch role (now: \(role == "friend" ? "friend" : "walker"))", kind: .ghost) {
@@ -280,7 +280,7 @@ struct SettingsView: View {
             Button("Turn off", role: .destructive) { checkinsOff = true }
             Button("Keep them on", role: .cancel) {}
         } message: {
-            Text("Levin won't check in, so nobody is alerted if you stop answering. The silent alert, lost contact and car speed still work. Your circle is told check-ins are off.")
+            Text("Melvin won't check in, so nobody is alerted if you stop answering. The silent alert, lost contact and car speed still work. Your circle is told check-ins are off.")
         }
         // A full-screen cover, not a sheet: sheets here were being dismissed by the polling re-renders behind them.
         .fullScreenCover(isPresented: $customizing) {

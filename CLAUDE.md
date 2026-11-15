@@ -1,11 +1,11 @@
 # Pupdate: notes for the next agent
 
-**Naming.** The product is called **Pupdate** (renamed from WalkBuddy). Everything people see says Pupdate: the Home Screen
-and widget names, permission prompts, in-app titles, notifications, the API title and the README. Internal identifiers
-deliberately keep the old name, because renaming them breaks things that already exist: Xcode project, targets, folders and
-the scheme (`WalkBuddy`), bundle IDs (`com.walkbuddy.app.*`, a change installs a second app and needs new provisioning),
-server paths and the systemd unit (`/opt/walkbuddy`, `walkbuddy`), the MongoDB database `walkbuddy` (holds the live state),
-UserDefaults keys (`wb.*`), and the GitHub repo. Use "Pupdate" in any new user-facing text. The URL scheme is `pupdate://`.
+**Naming.** The product is called **Pupdate** (renamed from Pupdate). The code uses it too: the Xcode project, targets,
+scheme and folders (`Pupdate`, `PupdateWidgets`, `PupdateUITests`), Swift type names and logger names. A few internal
+identifiers deliberately keep the old name, because renaming them breaks things that already exist: bundle IDs
+(`com.walkbuddy.app.*`, a change installs a second app and needs new provisioning), server paths and the systemd unit
+(`/opt/walkbuddy`, `walkbuddy`, `/etc/walkbuddy.env`), the MongoDB database `walkbuddy` (holds the live state), the SSH key
+`walkbuddy_vultr`, and UserDefaults keys (`wb.*`). Use "Pupdate" everywhere else. The URL scheme is `pupdate://`.
 
 Read `README.md` first for what the product does. This file covers how the code is laid out, how to change it without breaking the demo, and what is still open.
 
@@ -42,7 +42,7 @@ backend/app/
   main.py       FastAPI routes (see README API table)
 swift/
   project.yml   XcodeGen spec (run `xcodegen generate` after adding files). WBDefaultServer = the Vultr URL
-  WalkBuddy/Sources/
+  Pupdate/Sources/
     API.swift            Codable models (snake_case -> camelCase) + calls; walkSettings sent with every walk
     Stores.swift         WalkerStore (1 s poll, spoken turns, flag heads-ups), FriendStore (1.5 s poll, alarms,
                          notices), LocationTicker (background GPS on real walks)
@@ -54,12 +54,12 @@ swift/
     SettingsView.swift   check-ins on/off (confirm), schedule, alert timing, accessibility, circle, server, demo.
                          ScreenPanel enum
     HomeView, FriendView, BuddyView (rub-to-pet, 2 s duress), Features (ladder, walk log), Theme, Feedback
-  WalkBuddy/Shared/WalkActivity.swift   Live Activity ContentState (shared with the widget; new fields must be optional),
+  Pupdate/Shared/WalkActivity.swift   Live Activity ContentState (shared with the widget; new fields must be optional),
                                         PetBuddyIntent (Lock Screen Pet button)
-  WalkBuddy/Shared/DogView.swift        the animated vector dog (species "dog"), app + widget. Art: DogArt.swift is GENERATED
+  Pupdate/Shared/DogView.swift        the animated vector dog (species "dog"), app + widget. Art: DogArt.swift is GENERATED
                                         from swift/tools/dog_art.py (python3 dog_art.py && python3 gen_dog_swift.py)
-  WalkBuddyWidgets/                     Lock Screen + Dynamic Island UI
-  WalkBuddyUITests/                     XCUITest end-to-end against the live server (18 tests)
+  PupdateWidgets/                     Lock Screen + Dynamic Island UI
+  PupdateUITests/                     XCUITest end-to-end against the live server (18 tests)
 deploy/        vultr-deploy.sh, cloud-init.sh (fresh server)
 demo-server.sh laptop fallback (local uvicorn + ngrok)
 app/           old Expo prototype, unused
@@ -78,13 +78,13 @@ app/           old Expo prototype, unused
 # backend
 cd backend && .venv/bin/pytest -q && .venv/bin/uvicorn app.main:app --port 8100
 # app (simulator): find a booted one with `xcrun simctl list devices booted`
-cd swift && xcodegen generate && xcodebuild -project WalkBuddy.xcodeproj -scheme WalkBuddy \
+cd swift && xcodegen generate && xcodebuild -project Pupdate.xcodeproj -scheme Pupdate \
   -destination 'id=<SIM_ID>' -derivedDataPath build-sim build
 # UI tests hit the live server (they reset demo state there)
-xcodebuild test ... -only-testing:WalkBuddyUITests/WalkBuddyE2ETests
+xcodebuild test ... -only-testing:PupdateUITests/PupdateE2ETests
 # physical iPhone (free team F87457F436; the device must be unlocked and trusted)
 xcodebuild ... -destination "id=00008130-000C40222E43001C" -derivedDataPath build-dev -allowProvisioningUpdates build
-xcrun devicectl device install app --device 00008130-000C40222E43001C build-dev/Build/Products/Debug-iphoneos/WalkBuddy.app
+xcrun devicectl device install app --device 00008130-000C40222E43001C build-dev/Build/Products/Debug-iphoneos/Pupdate.app
 ```
 
 To simulate GPS in the simulator: `xcrun simctl location <SIM_ID> set 33.4195,-111.9345`.
@@ -96,9 +96,9 @@ To simulate GPS in the simulator: `xcrun simctl location <SIM_ID> set 33.4195,-1
   - The systemd unit is `walkbuddy`; code lives in `/opt/walkbuddy`; secrets are in `/etc/walkbuddy.env` (MONGODB_URI, GEMINI_API_KEY).
 - **SSH:** `ssh -i ~/.ssh/walkbuddy_vultr root@45.76.67.21`.
 - **Update:** `cd /opt/walkbuddy && git pull && systemctl restart walkbuddy` (run `pip install -r backend/requirements.txt` if requirements changed).
-- **GitHub:** JeremyEltho/walkbuddy (public), branch `main`.
+- **GitHub:** JeremyEltho/Pupdate (public, formerly walkbuddy), branch `main`.
   - The working copy here lives inside the parent hackathon repo (`sunhacks26`, branch master, no remote), so it can't push directly.
-  - Pushes go through a separate clone of the GitHub repo: rsync `walkbuddy/` into it with `--exclude-from=<clone>/.gitignore --exclude .git`, then commit and push from the clone.
+  - Pushes go through a separate clone of the GitHub repo (on this Mac: `/Users/Projects/Pupdate`): rsync `walkbuddy/` into it with `--exclude-from=<clone>/.gitignore --exclude .git`, then commit and push from the clone.
   - **Check the diff before committing.** rsync overwrites, so keep README.md in this folder as the source of truth.
 - **Never commit secrets.** `.env` files are git-ignored: `walkbuddy/.env` holds VULTR_API_KEY and MONGODB_URI, and the Gemini key is in `../fitcheck/.env`. Don't print their values.
 - **State:** a MongoDB Atlas snapshot (db `walkbuddy`, collection `state`, `_id: "state"`), saved after every POST or DELETE and every 5 s. `POST /demo/reset` reseeds users, walks, alerts and seed flags, and keeps the circle, buddy name/species and flags people added.
@@ -110,7 +110,7 @@ and never force-push.
 
 ## Demo users
 
-- **jordan:** the walker. Buddy Levin, a dog at 90 XP, so it evolves at 100 (Puppy -> Scout Pup -> Guardian Dog). Circle: maya and sam.
+- **jordan:** the walker. Buddy Melvin, a dog at 90 XP, so it evolves at 100 (Puppy -> Scout Pup -> Guardian Dog). Circle: maya and sam.
 - **maya:** the friend role on the phone.
 - **sam:** another circle member.
 - **IDs are hard-coded:** `"jordan"` in WalkerStore and Settings, `"maya"` in FriendStore. There is no auth; that is deliberate for the hackathon.

@@ -142,10 +142,10 @@ struct Species: Identifiable, Hashable {
     let sprite: Sprite
 }
 
-/// Pets you can pick. The chick has its own evolution line (egg, chick, owl); every other
-/// pet keeps its look and earns gear instead: a star at Explorer, a crown at Guardian.
+/// Pets you can pick. The pup is the main one (drawn and animated); every other pet keeps its
+/// look and earns gear instead: a star at Explorer, a crown at Guardian. No chick.
 let SPECIES: [Species] = [
-    .init(id: "chick", name: "Chick", sprite: .chick), .init(id: "dog", name: "Pup", sprite: .dog),
+    .init(id: "dog", name: "Pup", sprite: .dog),  // the main pet, first and the default
     .init(id: "cat", name: "Kitty", sprite: .cat), .init(id: "bunny", name: "Bunny", sprite: .bunny),
     .init(id: "poodle", name: "Poodle", sprite: .poodle), .init(id: "hedgehog", name: "Hedgehog", sprite: .hedgehog),
     .init(id: "chipmunk", name: "Chipmunk", sprite: .chipmunk), .init(id: "otter", name: "Otter", sprite: .otter),

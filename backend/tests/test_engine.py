@@ -113,7 +113,7 @@ def test_triggers_only_mode_never_schedules():
 
 
 def test_buddy_evolves_at_100():
-    b = {"name": "Levin", "xp": 90, "form": "sprout"}
+    b = {"name": "Melvin", "xp": 90, "form": "sprout"}
     b, evolved = buddy.add_xp(b, 10)
     assert evolved == "strider" and b["xp"] == 100
     b, evolved = buddy.add_xp(b, 10)

@@ -35,7 +35,7 @@ def run_demo_once():
     v = c.get(f"/walks/{wid}").json()
     assert v["engine"]["state"] == "checkin" and v["engine"]["reason"] == "scheduled"
 
-    # Answered from the phone: +10 XP, Levin evolves.
+    # Answered from the phone: +10 XP, Melvin evolves.
     r = c.post(f"/walks/{wid}/pet").json()
     pet = [e for e in r["events"] if e["type"] == "pet_ok"][0]
     assert pet["xp"] == 10 and pet["evolved"] == "strider"
@@ -127,7 +127,7 @@ def test_customize_buddy_and_reset_restores():
     c.post("/demo/reset")  # keeps the chosen pet, resets XP
     b = c.get("/users/jordan").json()["buddy"]
     assert b["name"] == "Biscuit" and b["species"] == "dog" and b["xp"] == 90
-    c.post("/users/jordan/buddy", json={"name": "Levin", "species": "chick"})
+    c.post("/users/jordan/buddy", json={"name": "Melvin", "species": "dog"})
 
 
 def test_route_assess_falls_back_to_rule_without_gemini(monkeypatch):

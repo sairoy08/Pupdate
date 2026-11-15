@@ -45,6 +45,6 @@ def test_checkin_line_and_alert_summary_fallbacks(monkeypatch):
 
 
 def test_prompts_are_grounded():
-    p = buddy_ai.alert_prompt("Jordan", "duress", "near Tooker House", 6, "none yet", "Levin")
+    p = buddy_ai.alert_prompt("Jordan", "duress", "near Tooker House", 6, "none yet", "Melvin")
     assert "NOT to call" in p and "no speculation" in p
-    assert "70 characters" in buddy_ai.checkin_prompt("Levin", "dog", "Jordan", "off_route", "near Cady Mall")
+    assert "70 characters" in buddy_ai.checkin_prompt("Melvin", "dog", "Jordan", "off_route", "near Cady Mall")

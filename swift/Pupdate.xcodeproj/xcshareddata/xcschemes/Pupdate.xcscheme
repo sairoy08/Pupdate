@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F949F0288528AAF306E5E2A3"
-               BuildableName = "WalkBuddy.app"
-               BlueprintName = "WalkBuddy"
-               ReferencedContainer = "container:WalkBuddy.xcodeproj">
+               BlueprintIdentifier = "55E80E29E9A532DD844B8C34"
+               BuildableName = "Pupdate.app"
+               BlueprintName = "Pupdate"
+               ReferencedContainer = "container:Pupdate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,10 +29,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BC040022BD1724216B05230"
-               BuildableName = "WalkBuddyWidgets.appex"
-               BlueprintName = "WalkBuddyWidgets"
-               ReferencedContainer = "container:WalkBuddy.xcodeproj">
+               BlueprintIdentifier = "172490DD97B5914C73B5D161"
+               BuildableName = "PupdateWidgets.appex"
+               BlueprintName = "PupdateWidgets"
+               ReferencedContainer = "container:Pupdate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,10 +46,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F949F0288528AAF306E5E2A3"
-            BuildableName = "WalkBuddy.app"
-            BlueprintName = "WalkBuddy"
-            ReferencedContainer = "container:WalkBuddy.xcodeproj">
+            BlueprintIdentifier = "55E80E29E9A532DD844B8C34"
+            BuildableName = "Pupdate.app"
+            BlueprintName = "Pupdate"
+            ReferencedContainer = "container:Pupdate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -58,10 +58,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "008A0727440EAA3BED662518"
-               BuildableName = "WalkBuddyUITests.xctest"
-               BlueprintName = "WalkBuddyUITests"
-               ReferencedContainer = "container:WalkBuddy.xcodeproj">
+               BlueprintIdentifier = "58D0973117E5928533F86FF6"
+               BuildableName = "PupdateUITests.xctest"
+               BlueprintName = "PupdateUITests"
+               ReferencedContainer = "container:Pupdate.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -82,10 +82,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F949F0288528AAF306E5E2A3"
-            BuildableName = "WalkBuddy.app"
-            BlueprintName = "WalkBuddy"
-            ReferencedContainer = "container:WalkBuddy.xcodeproj">
+            BlueprintIdentifier = "55E80E29E9A532DD844B8C34"
+            BuildableName = "Pupdate.app"
+            BlueprintName = "Pupdate"
+            ReferencedContainer = "container:Pupdate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -101,10 +101,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F949F0288528AAF306E5E2A3"
-            BuildableName = "WalkBuddy.app"
-            BlueprintName = "WalkBuddy"
-            ReferencedContainer = "container:WalkBuddy.xcodeproj">
+            BlueprintIdentifier = "55E80E29E9A532DD844B8C34"
+            BuildableName = "Pupdate.app"
+            BlueprintName = "Pupdate"
+            ReferencedContainer = "container:Pupdate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

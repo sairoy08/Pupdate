@@ -43,7 +43,7 @@ struct FriendView: View {
                     }
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Hi Maya").font(Typeface.display(34)).foregroundStyle(Palette.text)
-                        Text("You'll hear from \(walk?.buddy.name ?? "Levin") if Jordan stops answering.").font(Typeface.body(16)).foregroundStyle(Palette.muted)
+                        Text("You'll hear from \(walk?.buddy.name ?? "Melvin") if Jordan stops answering.").font(Typeface.body(16)).foregroundStyle(Palette.muted)
                     }
                     if let err = store.error, store.feed == nil { Banner(text: "Can't reach the server: \(err)", alert: true) }
 
@@ -111,7 +111,7 @@ struct FriendView: View {
 
                     GameCard {
                         VStack(alignment: .leading, spacing: 12) {
-                            SectionTitle(text: "Demo controls", sub: "The sim walks at 2x and escalates at 4x. It never pets Levin: every pet comes from Jordan's phone.")
+                            SectionTitle(text: "Demo controls", sub: "The sim walks at 2x and escalates at 4x. It never pets Melvin: every pet comes from Jordan's phone.")
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 8) {
                                     ForEach(store.routes) { r in
@@ -189,7 +189,15 @@ struct FriendView: View {
         .animation(.spring(response: 0.45, dampingFraction: 0.85), value: store.alert?.id)
         // The takeover sits under any open panel, so an alert closes Settings or Flags to be seen.
         .onChange(of: store.alert?.id) { _, id in if id != nil, panel != nil { panel = nil } }
-        .onAppear { store.start() }
+        .onAppear {
+            store.start()
+            #if targetEnvironment(simulator)
+            // Simulator-only: -panel settings|flags opens that screen (screenshots).
+            if let i = CommandLine.arguments.firstIndex(of: "-panel"), i + 1 < CommandLine.arguments.count {
+                panel = CommandLine.arguments[i + 1] == "flags" ? .flags : CommandLine.arguments[i + 1] == "settings" ? .settings : nil
+            }
+            #endif
+        }
         .onDisappear { store.stop() }
         .fullScreenCover(item: $panel) { p in
             if p == .flags { FlagsView(me: "maya", onClose: { panel = nil }) } else { SettingsView(onClose: { panel = nil }) }

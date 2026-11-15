@@ -13,7 +13,7 @@ ios
 
 ## Product Purpose
 
-Pupdate makes the walk home safer by turning check-ins into caring for a pet. The buddy (Levin, a dog by default) checks in when something looks off; the walker answers by petting it. If they stop answering, it escalates (check-in, nudge, last chance, countdown) and then the walker's circle gets a full-screen alert with the last location. Success: the walker keeps the app running every walk because it's pleasant, and a friend reacts within seconds when it matters.
+Pupdate makes the walk home safer by turning check-ins into caring for a pet. The buddy (Melvin, a dog by default) checks in when something looks off; the walker answers by petting it. If they stop answering, it escalates (check-in, nudge, last chance, countdown) and then the walker's circle gets a full-screen alert with the last location. Success: the walker keeps the app running every walk because it's pleasant, and a friend reacts within seconds when it matters.
 
 ## Positioning
 
@@ -34,7 +34,7 @@ A safety app that feels like raising a pet. The check-in is a rub on the buddy, 
 - Only a friend closes an alert.
 - No push notifications: friend alerts need the app open.
 - UI conventions in CLAUDE.md are binding (one fullScreenCover presenter per screen via ScreenPanel, publish-only-on-change stores, in-place overlays, Typeface/Palette/Motion tokens, accessibility identifiers used by UI tests).
-- Internal identifiers keep the WalkBuddy name; user-facing text says Pupdate.
+- Everything says Pupdate; only bundle IDs, the server folder/unit, the MongoDB database and `wb.*` settings keys keep the old `walkbuddy` name.
 
 ## Brand Commitments
 

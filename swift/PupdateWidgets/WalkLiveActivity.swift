@@ -4,7 +4,7 @@ import SwiftUI
 import WidgetKit
 
 @main
-struct WalkBuddyWidgetsBundle: WidgetBundle {
+struct PupdateWidgetsBundle: WidgetBundle {
     var body: some Widget { WalkLiveActivity() }
 }
 

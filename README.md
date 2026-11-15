@@ -1,8 +1,6 @@
 # Pupdate
 
-Your pup walks you home and keeps your friends updated. (Formerly WalkBuddy. The code, Xcode targets, bundle IDs and
-server paths still use the internal name `walkbuddy`; see CLAUDE.md.)
-
+Your pup walks you home and keeps your friends updated.
 
 Raise a little buddy by walking home safe. Pick your pet (pup, kitty, bunny, otter, sloth and more), name it, and while you walk it checks in now and then. You answer by petting it: rub your finger across it, because a tap doesn't count. If you stop answering, it escalates, and then your friends get a full-screen alert with your last location.
 
@@ -29,7 +27,7 @@ The safety logic lives in one small, deterministic state machine (`backend/app/e
 
 ## The dog
 
-Levin is an animated dog by default (species `dog`; the other pets are still in Customize).
+Melvin is an animated dog by default (species `dog`; the other pets are still in Customize).
 - **Reacts in the app:** wags slowly when calm, tilts its head with one ear up when asking, tucks its tail when worried, trembles when alarmed. While you rub it, it leans in and closes its eyes; after a pet it's happy (tongue out, fast wag, hearts).
 - **Evolves:** Puppy -> Scout Pup (gold bandana) -> Guardian Dog (reflective vest, shield tag, headlamp).
 - **Live Activity:** the dog's face on the Lock Screen and Dynamic Island follows the walk state and smiles right after a pet. A **Pet** button there checks in without unlocking. During an alert it's only a late pet: friends are told and the alert stays open.
